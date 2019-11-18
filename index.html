@@ -14,6 +14,37 @@
 			</span>
 </nav>
 
+    <div class="container">
+        <div class="row">
+            <p class="col-4">Chart Data: </p>
+            <p class="col-3">Time Period: </p>
+            <button class="button col-sm-1" type="button" style="width:40px; height:25px;"
+                    onclick="updateVisualization()">Filter</button>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-4">
+                <select class="form-control" id="filter" onchange="updateVisualization()">
+                    <option value="average_participation">Average Participation</option>
+                    <option value="average_benefit">Average Benefit</option>
+                    <option value="total_benefit">Total Benefit</option>
+                    <option value="other_costs">Other Costs</option>
+                    <option value="total_costs">Total Costs</option>
+                </select>
+            </div>
+
+            <div class="time-group col-8">
+                <input type="text" placeholder="From" id="first-year">
+                -
+                <input type="text" placeholder="To" id="last-year">
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="chart-area"></div>
+        </div>
+    </div>
+
     <div id = 'stacked'>
 
     <div class='row' id = 'yearLower'>
@@ -56,6 +87,7 @@
 
     <script src="js/main.js"></script>
     <script src="js/main-larry.js"></script>
+    <script src="js/main-annabel.js"></script>
     <script src="js/main-sean.js"></script>
 </body>
 </html>
