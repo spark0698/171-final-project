@@ -11,11 +11,41 @@
     <!-- content -->
     Hello HTML World!
 
+    <div id = 'stacked'>
+
+    <div class='row' id = 'yearLower'>
+        <div class='col-md-1'>
+            <form class="form-inline">
+                <div class="form-group">
+                <label for="year-lower">View</label>
+                <select id="year-lower" onchange='updateVisualization()'>
+                </select>
+                </select>
+                </div>
+            </form>
+        </div>
+
+        <div class='col-md-1' id='yearUpper'>
+            <form class="form-inline">
+                <div class="form-group">
+                <label for="year-upper">To</label>
+                <select id="year-upper" onchange='updateVisualization()'>
+                </select>
+                </select>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+    <div id='chart-area'>
+    </div>
+    </div>
     
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/d3.min.js"></script>
+    <script src='js/stackedAreaChart.js'></script>
 
     <script src="js/main.js"></script>
 </body>
