@@ -5,6 +5,7 @@ body {
 }
 
 h1 {
+    text-align: center;
 }
 
 .area {
@@ -27,6 +28,22 @@ label {
 
 .navbar {
     margin-bottom: 1em;
+}
+
+.viz {
+    text-align: center;
+}
+
+.container {
+    margin-top: 1.5em;
+}
+
+.tmp {
+    max-width: 100%;
+}
+
+#placeholder {
+    margin-bottom: 3em;
 }
 
 /*Annabel's CSS*/

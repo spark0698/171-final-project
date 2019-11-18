@@ -8,74 +8,138 @@
 </head>
 <body>
 
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-			<span class="navbar-text">
-				Oh SNAP! Food Stamps Over Time
-			</span>
-</nav>
-
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+                <span class="navbar-text">
+                    Oh SNAP! Food Stamps Over Time
+                </span>
+    </nav>
     <div class="container">
+        <h1>SNAP's Effect Across the Nation</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+            laborum.</p>
+    </div>
+
+    <div class="container viz">
         <div class="row">
-            <p class="col-4">Chart Data: </p>
-            <p class="col-3">Time Period: </p>
-            <button class="button col-sm-1" type="button" style="width:40px; height:25px;"
-                    onclick="updateVisualization()">Filter</button>
+            <div class="col">
+                <div class="row">
+                    <p class="col-4">Chart Data: </p>
+                    <p class="col-3">Time Period: </p>
+                    <button class="button col-sm-1" type="button" style="width:40px; height:25px;"
+                            onclick="updateVisualization()">Filter</button>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-4">
+                        <select class="form-control" id="filter" onchange="updateVisualization()">
+                            <option value="average_participation">Average Participation</option>
+                            <option value="average_benefit">Average Benefit</option>
+                            <option value="total_benefit">Total Benefit</option>
+                            <option value="other_costs">Other Costs</option>
+                            <option value="total_costs">Total Costs</option>
+                        </select>
+                    </div>
+
+                    <div class="time-group col-8">
+                        <input type="text" placeholder="From" id="first-year">
+                        -
+                        <input type="text" placeholder="To" id="last-year">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="graph-area"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                        laborum.</p>
+                </div>
+                <div class="row">
+                    <img class="tmp" src="img/empty-image.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container viz">
+
+        <div class="row">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum.</p>
+        </div>
+
+        <h1>SNAP vs Other Social Welfare Programs</h1>
+
+        <div id = 'stacked'>
+
+        <div class='row' id = 'yearLower'>
+            <div class='col-md-1'>
+                <form class="form-inline">
+                    <div class="form-group">
+                    <label for="year-lower">View</label>
+                    <select id="year-lower" onchange='updateVisualization()'>
+                    </select>
+                    </select>
+                    </div>
+                </form>
+            </div>
+
+            <div class='col-md-1' id='yearUpper'>
+                <form class="form-inline">
+                    <div class="form-group">
+                    <label for="year-upper">To</label>
+                    <select id="year-upper" onchange='updateVisualization()'>
+                    </select>
+                    </select>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div id='chart-area'>
+        </div>
+        </div>
+    </div>
+
+    <div class="container viz">
+        <h1>How does SNAP affect each state?</h1>
+
+        <div class="row" id="placeholder">
+            <div class="col">
+                <img class="tmp" src="img/empty-image.png">
+            </div>
+            <div class="col">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                    laborum.</p>
+            </div>
         </div>
 
         <div class="row">
             <div class="form-group col-4">
-                <select class="form-control" id="filter" onchange="updateVisualization()">
-                    <option value="average_participation">Average Participation</option>
-                    <option value="average_benefit">Average Benefit</option>
-                    <option value="total_benefit">Total Benefit</option>
-                    <option value="other_costs">Other Costs</option>
-                    <option value="total_costs">Total Costs</option>
+                <select class="form-control" id="rank" onchange="updateViz()">
+                    <option value="aug_18">August 2018</option>
+                    <option value="jul_19">July 2019</option>
+                    <option value="aug_19">August 2019</option>
                 </select>
             </div>
 
-            <div class="time-group col-8">
-                <input type="text" placeholder="From" id="first-year">
-                -
-                <input type="text" placeholder="To" id="last-year">
+            <div id="map">
             </div>
         </div>
-
-        <div class="row">
-            <div id="chart-area"></div>
-        </div>
-    </div>
-
-    <div id = 'stacked'>
-
-    <div class='row' id = 'yearLower'>
-        <div class='col-md-1'>
-            <form class="form-inline">
-                <div class="form-group">
-                <label for="year-lower">View</label>
-                <select id="year-lower" onchange='updateVisualization()'>
-                </select>
-                </select>
-                </div>
-            </form>
-        </div>
-
-        <div class='col-md-1' id='yearUpper'>
-            <form class="form-inline">
-                <div class="form-group">
-                <label for="year-upper">To</label>
-                <select id="year-upper" onchange='updateVisualization()'>
-                </select>
-                </select>
-                </div>
-            </form>
-        </div>
-        
-    </div>
-    <div id='chart-area'>
-    </div>
-    </div>
-
-    <div id="map-area">
 
     </div>
     
