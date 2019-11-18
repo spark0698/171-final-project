@@ -18,3 +18,13 @@ h1 {
 label {
 	margin: 1%;
 }
+
+/* top navbar */
+.navbar-text {
+    font-size: 3em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+    margin-bottom: 1em;
+}

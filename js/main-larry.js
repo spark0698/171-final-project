@@ -14,26 +14,26 @@ var areachart, timeline;
 
 // Load years for selection
 
-var lowerBound = document.getElementById('year-lower')
-var upperBound = document.getElementById('year-upper')
+var lowerBound = document.getElementById('year-lower');
+var upperBound = document.getElementById('year-upper');
 
 for (i=1961;  i<2018;i++) {
-	console.log(i)
+	console.log(i);
 
-	var year1 = i
-	var year2 = i+1
+	var year1 = i;
+	var year2 = i+1;
 
-	var option1 = document.createElement('option')
-	var option2 = document.createElement('option')
+	var option1 = document.createElement('option');
+	var option2 = document.createElement('option');
 
-	option1.text = year1.toString()
-	option2.text = year2.toString()
+	option1.text = year1.toString();
+	option2.text = year2.toString();
 
-	option1.value = year1
-	option2.value = year2
+	option1.value = year1;
+	option2.value = year2;
 
-	lowerBound.add(option1)
-	upperBound.add(option2)
+	lowerBound.add(option1);
+	upperBound.add(option2);
 
 }
  
@@ -80,7 +80,7 @@ function loadData() {
     });
 }
 
-console.log('hello')
+console.log('hello');
 
 function createVis() {
 
