@@ -2,40 +2,50 @@ var formatTime = d3.timeFormat("%Y");
 var parseTime = d3.timeParse("%Y");
 var bisectDate = d3.bisector(function (d){ return d.fiscal_year }).left;
 
-var margin = {top: 30, right: 50, bottom: 50, left: 50};
+var margin_area = {top: 30, right: 100, bottom: 50, left: 50};
 
-var width = 700 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+var width_area = 700 - margin_area.left - margin_area.right,
+    height_area = 700 - margin_area.top - margin_area.bottom;
 
-var svg = d3.select("#graph-area").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+var svg_area = d3.select("#graph-area").append("svg")
+    .attr("width", width_area + margin_area.left + margin_area.right)
+    .attr("height", height_area + margin_area.top + margin_area.bottom)
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin_area.left + "," + margin_area.top + ")");
 
-var timeScale = d3.scaleTime()
+var timeScale_area = d3.scaleTime()
     .domain(d3.extent(function(d) { return d.fiscal_year; }))
-    .range([0, width]);
+    .range([0, width_area]);
 
-var yScale = d3.scaleLinear()
+var yScale_area = d3.scaleLinear()
     .domain(d3.extent(function(d) { return d.average_participation; }))
-    .range([height, 0]);
+    .range([height_area, 0]);
 
-var xAxis = d3.axisBottom()
-    .scale(timeScale)
+var xAxis_area = d3.axisBottom()
+    .scale(timeScale_area)
     .tickFormat(d3.timeFormat("%Y"));
 
-var yAxis = d3.axisLeft()
-    .scale(yScale);
+var yAxis_area = d3.axisLeft()
+    .scale(yScale_area);
 
-svg.append("g")
+svg_area.append("g")
     .attr("class", "axis x-axis")
-    .attr("transform", "translate(0, " + height + ")")
-    .call(xAxis);
+    .attr("transform", "translate(0, " + height_area + ")")
+    .call(xAxis_area);
 
-svg.append("g")
+svg_area.append("g")
     .attr("class", "axis y-axis")
-    .call(yAxis);
+    .call(yAxis_area);
+
+svg_area.append("text")
+    .attr("transform", "translate(-45, -10)")
+    .attr("class", "axis-label y-label")
+    .text("Thousands");
+
+svg_area.append("text")
+    .attr("transform", "translate(" + (width_area + 10) + "," + height_area + ")")
+    .attr("class", "axis-label")
+    .text("Date");
 
 loadData();
 
@@ -52,9 +62,9 @@ function loadData() {
             d.total_costs = +d.total_costs;
         });
 
-        data = csv;
+        data_area = csv;
 
-        console.log(data);
+        console.log(data_area);
 
         updateVisualization();
 
@@ -70,32 +80,25 @@ function updateVisualization() {
     var last_year = document.getElementById("last-year").value;
 
     if (first_year != "" && last_year != "") {
-        filtered_data = data.filter(function(d){
+        filtered_data = data_area.filter(function(d){
             return (formatTime(d.fiscal_year) >= first_year && formatTime(d.fiscal_year) <= last_year);
         })
     } else {
-        filtered_data = data;
+        filtered_data = data_area;
     }
 
     console.log(filtered_data);
 
-    timeScale.domain(d3.extent(filtered_data, function(d) { return d.fiscal_year; }));
-    yScale.domain(d3.extent(filtered_data, function(d) { return d[filter]; }));
+    timeScale_area.domain(d3.extent(filtered_data, function(d) { return d.fiscal_year; }));
+    yScale_area.domain(d3.extent(filtered_data, function(d) { return d[filter]; }));
 
     var area = d3.area()
-        .x(function(d) { return timeScale(d.fiscal_year); })
-        .y0(height)
-        .y1(function(d) { return yScale(d[filter]); });
+        .x(function(d) { return timeScale_area(d.fiscal_year); })
+        .y0(height_area)
+        .y1(function(d) { return yScale_area(d[filter]); });
 
-    var path = svg.selectAll(".area")
+    var path = svg_area.selectAll(".area")
         .data(filtered_data);
-
-    // var path = svg.append("path")
-    //     .datum(filtered_data)
-    //     .attr("class", "area")
-    //     .transition()
-    //     .duration(300)
-    //     .attr("d", area);
 
     path.enter()
         .append("path")
@@ -105,56 +108,50 @@ function updateVisualization() {
         .delay(200)
         .attr("d", area(filtered_data));
 
-    svg.selectAll(".x-axis")
+    svg_area.selectAll(".x-axis")
         .transition()
-        .duration(200)
-        .attr("transform", "translate(0, " + height + ")")
-        .call(xAxis);
+        .duration(100)
+        .attr("transform", "translate(0, " + height_area + ")")
+        .call(xAxis_area);
 
-    svg.selectAll(".y-axis")
+    svg_area.selectAll(".y-axis")
         .transition()
-        .duration(200)
-        .call(yAxis);
+        .duration(100)
+        .call(yAxis_area);
 
-    var text = svg.selectAll(".text")
-        .data(filtered_data);
+    d3.selectAll(".y-label")
+        .text(function(d) {
+            if (filter == "average_benefit") {
+                return "Dollars";
+            } else if (filter == "average_participation") {
+                return "Thousands";
+            } else {
+                return "Millions of Dollars";
+            }
+        });
 
-    text.enter()
-        .append("text")
-        .attr("class","axis-label")
-        .merge(text)
-        .transition()
-        .duration(200)
-        .attr("x", -40)
-        .attr("y", -20)
-        .attr("dy", "1em")
-        .text("Thousands");
-    // .text(function(d) {
-    //     if (filter == "average_participation") {
-    //         return "Thousands";
-    //     } else if (filter == "average_benefit") {
-    //         return "Dollars";
-    //     } else {
-    //         return "Millions of Dollars";
-    //     }
-    // });
+    // text.enter()
+    //     .append("text")
+    //     .attr("class","axis-label")
+    //     .merge(text)
+    //     .transition()
+    //     .duration(200)
+    //     .attr("x", -40)
+    //     .attr("y", -20)
+    //     .attr("dy", "1em")
+    //     .text("Thousands");
 
-    svg.append("text")
-        .attr("transform", "translate(" + (width + 10) + "," + height + ")")
-        .attr("class", "axis-label")
-        .text("Date");
-
-    svg.append("rect")
+    svg_area.append("rect")
         .attr("class", "mask")
-        .attr("width", width)
-        .attr("height", height)
+        .attr("width", width_area)
+        .attr("height", height_area)
         .style("fill", "none")
         .style("pointer-events", "all")
         .on("mouseover", function(){ focus.style("display", null) })
         .on("mouseout", function(){ focus.style("display", "none") })
         .on("mousemove", mousemove);
 
-    var focus = svg.append("g")
+    var focus = svg_area.append("g")
         .style("display", "none")
         .attr("class", "focus");
 
@@ -165,54 +162,54 @@ function updateVisualization() {
 
     focus.append("text")
         .attr("class", "y-data")
-        .data(data)
+        .data(data_area)
         .attr("font-size", 16)
         .attr("x", 9)
         .attr("y", -15);
 
     focus.append("text")
         .attr("class", "fiscal_year")
-        .data(data)
+        .data(data_area)
         .attr("x", 9)
         .attr("y", 0)
         .attr("font-size", 12);
 
     function mousemove() {
-        var x0 = timeScale.invert(d3.mouse(this)[0]),
-            i = bisectDate(data, x0, 1),
-            d0 = data[i - 1],
-            d1 = data[i],
+        var x0 = timeScale_area.invert(d3.mouse(this)[0]),
+            i = bisectDate(filtered_data, x0, 1),
+            d0 = filtered_data[i - 1],
+            d1 = filtered_data[i],
             d = x0 - d0.date > d1.date - x0 ? d1 : d0;
 
         focus.select("line.x")
             .attr("y1", 0)
-            .attr("y2", height - yScale(d[filter]))
-            .attr("transform", "translate(" + timeScale(d.fiscal_year) +
-                "," + yScale(d[filter]) + ")");
+            .attr("y2", height_area - yScale_area(d[filter]))
+            .attr("transform", "translate(" + timeScale_area(d.fiscal_year) +
+                "," + yScale_area(d[filter]) + ")");
 
         focus.select("text.y-data")
             .text(d[filter].toLocaleString())
-            .attr("transform", "translate(" + timeScale(d.fiscal_year) +
-                "," + yScale(d[filter]) + ")")
-            .attr("fill", "steelblue");
+            .attr("transform", "translate(" + timeScale_area(d.fiscal_year) +
+                "," + yScale_area(d[filter]) + ")")
+            .attr("fill", "black");
 
         focus.select("text.fiscal_year")
             .text(formatTime(d.fiscal_year))
-            .attr("transform", "translate(" + timeScale(d.fiscal_year) +
-                "," + yScale(d[filter]) + ")")
-            .attr("fill", "steelblue");
+            .attr("transform", "translate(" + timeScale_area(d.fiscal_year) +
+                "," + yScale_area(d[filter]) + ")")
+            .attr("fill", "black");
     }
 
-    svg.append("line")
+    svg_area.append("line")
         .attr("x1", 0)
-        .attr("x2", width)
-        .attr("y1", yScale(100000))
-        .attr("y2", yScale(100000))
+        .attr("x2", width_area)
+        .attr("y1", yScale_area(100000))
+        .attr("y2", yScale_area(100000))
         .style("stroke-width", 1.5)
         .style("stroke-dasharray", ("8, 5"))
         .style("stroke", "red");
 
-    d3.selectAll(".area").exit().remove();
+    path.exit().remove();
     // d3.selectAll(".axis-label").exit().remove();
 
 }
