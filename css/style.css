@@ -53,13 +53,13 @@ label {
 /*    background-color: #f2f2f2;*/
 /*}*/
 
-/*.area {*/
-/*    fill: #b89681;*/
-/*}*/
+.area {
+    fill: rgba(141, 177, 203, 0.56);
+}
 
-/*.axis-label {*/
-/*    font-family: Calibri, serif;*/
-/*    font-size: 14px;*/
-/*    font-weight: bold;*/
-/*}*/
+.axis-label {
+    font-family: Calibri, serif;
+    font-size: 14px;
+    font-weight: bold;
+}
 
