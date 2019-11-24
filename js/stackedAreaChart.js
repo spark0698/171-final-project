@@ -83,11 +83,11 @@ StackedAreaChart.prototype.initVis = function(){
         .y1(function(d){return vis.y(d[1])})
 	
 
- //     vis.svg.append("defs").append("clipPath")
- //     .attr("id", "clip")
- //   .append("rect")
- //     .attr("width", vis.width)
- //     .attr("height", vis.height);
+     vis.svg.append("defs").append("clipPath")
+     .attr("id", "clip")
+   .append("rect")
+     .attr("width", vis.width)
+     .attr("height", vis.height);
 
 	// // TO-DO: Tooltip placeholder
     vis.svg.append('text').attr('fill', 'black')
