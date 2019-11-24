@@ -8,11 +8,11 @@ h1 {
     text-align: center;
 }
 
-.area {
+.areaStacked {
   opacity: 0.7;
   clip-path: url(#clip);
 }
-.area:hover {
+.areaStacked:hover {
   opacity: 1;
 }
 

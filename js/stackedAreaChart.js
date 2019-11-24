@@ -138,13 +138,13 @@ StackedAreaChart.prototype.updateVis = function(){
     var dataCategories = colorScale.domain();
 
 // Draw the layers
-    var categories = vis.svg.selectAll(".area")
+    var categories = vis.svg.selectAll(".areaStacked")
         .data(vis.displayData);
 
     console.log(vis.displayData)
 
     categories.enter().append("path")
-        .attr("class", "area")
+        .attr("class", "areaStacked")
         .merge(categories)
         .style("fill", function(d,i) {
             return colorScale(dataCategories[i]);
