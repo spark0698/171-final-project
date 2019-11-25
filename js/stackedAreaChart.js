@@ -93,7 +93,7 @@ StackedAreaChart.prototype.initVis = function(){
     vis.svg.append('text').attr('fill', 'black')
         .attr('id', 'tooltip')
         .attr('x', 50)
-        .attr('y', 30)
+        .attr('y', 30);
 
 
 	// TO-DO: (Filter, aggregate, modify data)
@@ -136,6 +136,7 @@ StackedAreaChart.prototype.updateVis = function(){
 	]);
 
     var dataCategories = colorScale.domain();
+    console.log(dataCategories);
 
 // Draw the layers
     var categories = vis.svg.selectAll(".areaStacked")
@@ -162,7 +163,7 @@ StackedAreaChart.prototype.updateVis = function(){
         })
         .on('click', function(d){
 
-        })
+        });
 
 
     // TO-DO: Update tooltip text

@@ -26,11 +26,14 @@
         <div class="row">
             <div class="col">
                 <div class="row">
-                    <p class="col-4">Chart Data: </p>
-                    <p class="col-3">Time Period: </p>
-                    <button class="button col-sm-1" type="button" style="width:40px; height:25px;"
-                            onclick="updateVisualization()">Filter</button>
+                    <div id='timeline'></div>
                 </div>
+<!--                <div class="row">-->
+<!--                    <p class="col-4">Chart Data: </p>-->
+<!--                    <p class="col-3">Time Period: </p>-->
+<!--                    <button class="button col-sm-1" type="button" style="width:40px; height:25px;"-->
+<!--                            onclick="updateVisualization()">Filter</button>-->
+<!--                </div>-->
 
                 <div class="row">
                     <div class="form-group col-4">
@@ -43,11 +46,11 @@
                         </select>
                     </div>
 
-                    <div class="time-group col-8">
-                        <input type="text" placeholder="From" id="first-year">
-                        -
-                        <input type="text" placeholder="To" id="last-year">
-                    </div>
+<!--                    <div class="time-group col-8">-->
+<!--                        <input type="text" placeholder="From" id="first-year">-->
+<!--                        - -->
+<!--                        <input type="text" placeholder="To" id="last-year">-->
+<!--                    </div>-->
                 </div>
 
                 <div class="row">
@@ -124,6 +127,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/d3.min.js"></script>
+    <script src="js/queue.min.js"></script>
+    <script src='js/areaChart.js'></script>
     <script src='js/stackedAreaChart.js'></script>
     <script src='js/timeline.js'></script>
 

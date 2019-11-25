@@ -15,7 +15,7 @@ Timeline = function(_parentElement, _data){
     this.initVis();
 }
 
-console.log('hello')
+console.log('hello');
 
 /*
  * Initialize area chart with brushing component
@@ -37,8 +37,8 @@ Timeline.prototype.initVis = function(){
 	    .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
 
-// Scales and axes
-  console.log(d3.extent(vis.displayData, function(d) { return d.Year; }))
+	// Scales and axes
+    console.log(d3.extent(vis.displayData, function(d) { return d.Year; }));
     vis.x = d3.scaleTime()
         .range([0, vis.width])
         .domain(d3.extent(vis.displayData, function(d) { return d.Year; }));
