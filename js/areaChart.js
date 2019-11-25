@@ -66,10 +66,10 @@ AreaChart.prototype.initVis = function() {
         .attr("width", vis.width)
         .attr("height", vis.height);
 
-    // vis.svg.append('text').attr('fill', 'black')
-    //     .attr('id', 'tooltip')
-    //     .attr('x', 50)
-    //     .attr('y', 30);
+    vis.svg.append('text').attr('fill', 'black')
+        .attr('id', 'tooltip-graph')
+        .attr('x', 50)
+        .attr('y', 30);
 
     vis.wrangleData();
 
