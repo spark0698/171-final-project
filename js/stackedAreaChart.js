@@ -91,7 +91,7 @@ StackedAreaChart.prototype.initVis = function(){
 
 	// // TO-DO: Tooltip placeholder
     vis.svg.append('text').attr('fill', 'black')
-        .attr('id', 'tooltip')
+        .attr('id', 'tooltip-stacked')
         .attr('x', 50)
         .attr('y', 30);
 
@@ -154,11 +154,11 @@ StackedAreaChart.prototype.updateVis = function(){
             return vis.area(d);
         })
         .on('mouseover', function(d, i) {
-            d3.select('#tooltip').text(dataCategories[i])
+            d3.select('#tooltip-stacked').text(dataCategories[i])
 
         })
         .on('mouseout', function(d){
-            d3.select('#tooltip').text('')
+            d3.select('#tooltip-stacked').text('')
 
         })
         .on('click', function(d){
