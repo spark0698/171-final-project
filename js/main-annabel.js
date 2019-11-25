@@ -67,7 +67,7 @@ function createVisualization(error, summaryData, budgetData) {
     // Color scale for the stacked area chart
     colorScale.domain(d3.keys(allData[0]).filter(function(d){ return d != "Year"; }));
 
-    console.log(data_area);
+    // console.log(data_area);
 
     grapharea = new AreaChart('graph-area', data_area);
     areachart = new StackedAreaChart('chart-area', allData);
@@ -86,10 +86,10 @@ function brushed() {
     var SelectionRange = [0,0];
 
     selectionRange = d3.brushSelection(d3.select('.brush').node());
-    console.log(selectionRange);
+    // console.log(selectionRange);
 
     var selectionDomain = selectionRange.map(timeline.x.invert);
-    console.log(selectionDomain);
+    // console.log(selectionDomain);
 
     grapharea.timeScale.domain(selectionDomain);
     areachart.x.domain(selectionDomain);

@@ -85,11 +85,11 @@ AreaChart.prototype.wrangleData = function(){
 
     vis.filtered_data = vis.data;
 
-    console.log(vis.filtered_data);
+    // console.log(vis.filtered_data);
 
     vis.updateVis();
 
-    console.log("test");
+    // console.log("test");
 
 }
 
