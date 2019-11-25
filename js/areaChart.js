@@ -78,17 +78,6 @@ AreaChart.prototype.initVis = function() {
 AreaChart.prototype.wrangleData = function(){
     var vis = this;
 
-    // vis.first_year = document.getElementById("first-year").value;
-    // vis.last_year = document.getElementById("last-year").value;
-
-    // if (vis.first_year != "" && vis.last_year != "") {
-    //     vis.filtered_data = vis.data.filter(function(d){
-    //         return (formatTime(d.Year) >= vis.first_year && formatTime(d.Year) <= vis.last_year);
-    //     })
-    // } else {
-    //     vis.filtered_data = vis.data;
-    // }
-
     vis.filtered_data = vis.data;
 
     console.log(vis.filtered_data);
@@ -103,6 +92,7 @@ AreaChart.prototype.updateVis = function(){
     var vis = this;
 
     vis.filter = d3.select("#filter").property("value");
+    vis.filter_name = d3.select("#filter option:checked").text();
 
     // vis.timeScale.domain(d3.extent(vis.filtered_data, function(d) { return d.Year; }));
     vis.yScale.domain(d3.extent(vis.filtered_data, function(d) { return d[vis.filter]; }));
@@ -150,6 +140,12 @@ AreaChart.prototype.updateVis = function(){
         .attr("height", vis.height)
         .style("fill", "none")
         .style("pointer-events", "all");
+        // .on('mouseover', function(d){
+        //     d3.select('#tooltip-graph').text(vis.filter_name + ": " + d[vis.filter])
+        // })
+        // .on('mouseout', function(d){
+        //     d3.select('#tooltip-graph').text('')
+        // });
 
     vis.focus = vis.svg.append("g")
         .style("display", "none")

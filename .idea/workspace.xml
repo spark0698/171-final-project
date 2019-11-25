@@ -4,7 +4,6 @@
     <list default="true" id="8f65cc91-cd40-4e0e-92fd-e39d17af4162" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/areaChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/areaChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/stackedAreaChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/stackedAreaChart.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +86,7 @@
       <workItem from="1574044839549" duration="5389000" />
       <workItem from="1574052672234" duration="193000" />
       <workItem from="1574628364945" duration="2116000" />
-      <workItem from="1574630719781" duration="13448000" />
+      <workItem from="1574630719781" duration="14610000" />
     </task>
     <servers />
   </component>
