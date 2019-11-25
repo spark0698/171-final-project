@@ -13,29 +13,6 @@ queue()
     .defer(d3.csv,"data/totalBudgetOnly.csv")
     .await(createVisualization);
 
-// function loadData() {
-//
-//     d3.csv("data/SNAPsummary.csv", function (csv) {
-//
-//         csv.map(function (d) {
-//             d.Year = parseTime(d.Year);
-//             d.average_participation = +d.average_participation;
-//             d.average_benefit = +d.average_benefit;
-//             d.total_benefit = +d.total_benefit;
-//             d.other_costs = +d.other_costs;
-//             d.total_costs = +d.total_costs;
-//         });
-//
-//         data_area = csv;
-//
-//         console.log(data_area);
-//
-//         createVisualization();
-//
-//     });
-//
-// }
-
 function createVisualization(error, summaryData, budgetData) {
 
     if (error) { console.log(error); }
@@ -67,7 +44,7 @@ function createVisualization(error, summaryData, budgetData) {
     // Color scale for the stacked area chart
     colorScale.domain(d3.keys(allData[0]).filter(function(d){ return d != "Year"; }));
 
-    console.log(data_area);
+    // console.log(data_area);
 
     grapharea = new AreaChart('graph-area', data_area);
     areachart = new StackedAreaChart('chart-area', allData);
@@ -86,10 +63,10 @@ function brushed() {
     var SelectionRange = [0,0];
 
     selectionRange = d3.brushSelection(d3.select('.brush').node());
-    console.log(selectionRange);
+    // console.log(selectionRange);
 
     var selectionDomain = selectionRange.map(timeline.x.invert);
-    console.log(selectionDomain);
+    // console.log(selectionDomain);
 
     grapharea.timeScale.domain(selectionDomain);
     areachart.x.domain(selectionDomain);

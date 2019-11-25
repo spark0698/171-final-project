@@ -28,14 +28,14 @@ loadMap();
 
 function loadMap() {
 
-    d3.csv("data/29SNAPcurrPP-11.csv", function (data) {
+    d3.csv("data/households-participation-benefits.csv", function (data) {
         data.forEach(function (d) {
-            d.aug_18 = d.aug_18.replace(/\,/g, '');
-            d.aug_18 = +d.aug_18;
-            d.jul_19 = d.jul_19.replace(/\,/g, '');
-            d.jul_19 = +d.jul_19;
-            d.aug_19 = d.aug_19.replace(/\,/g, '');
-            d.aug_19 = +d.aug_19;
+            d.households = d.households.replace(/\,/g, '');
+            d.households = +d.households;
+            d.participate = d.participate.replace(/\,/g, '');
+            d.participate = +d.participate;
+            d.benefit = d.benefit.replace(/\,/g, '');
+            d.benefit = +d.benefit;
         });
 
         dataSet = data;
@@ -46,41 +46,48 @@ function loadMap() {
 }
 
 function updateViz(data) {
-    console.log("yup")
     var rank = d3.select("#rank").property("value");
 
     var dataArray = [];
 
     for (var d = 0; d < dataSet.length; d++) {
-        dataArray.push(dataSet[d][rank])
+        dataArray.push(dataSet[d][rank]);
     }
 
     var colorScale = d3.scaleQuantile()
         .domain(dataArray)
-        .range(["#fff7bc", "#fee391", "#fec44f", "#fe9929", "#ec7014", "#cc4c02", "#993404", "#662506"]);
+
+    if (rank === "participate") {
+        colorScale.range(["#fef0d9", "#fdcc8a", "#fc8d59", "#e34a33", "#b30000"]);
+    } else if (rank === "benefit") {
+        colorScale.range(["#edf8fb", "#b2e2e2", "#66c2a4", "#2ca25f", "#006d2c"]);
+    } else {
+        colorScale.range(["#feebe2", "#fbb4b9", "#f768a1", "#c51b8a", "#7a0177"]);
+    }
 
     d3.json("data/states.json", function (json) {
         for (var i = 0; i < dataSet.length; i++) {
             for (var j = 0; j < json.features.length; j++) {
                 if (dataSet[i].state === json.features[j].properties.NAME) {
                     json.features[j].properties.value = dataSet[i][rank];
-                    console.log(dataSet[i][rank])
                     break;
                 }
             }
         }
 
-        svg_map.selectAll("path")
-            .data(json.features)
-            .enter()
+        var selection = svg_map.selectAll("path")
+            .data(json.features);
+
+        selection.enter()
             .append("path")
-            .attr("d", path)
+            .merge(selection)
+            .transition()
+            .duration(550)
             .style("stroke", "#fff")
             .style("stroke-width", "1")
             .style("fill", function (d) {
-                console.log(d.properties.NAME);
-                console.log(d.properties.value);
                 return colorScale(d.properties.value);
-            });
+            })
+            .attr("d", path);
     })
 }

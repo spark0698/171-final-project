@@ -12,7 +12,7 @@ StackedAreaChart = function(_parentElement, _data){
     this.displayData = []; // see data wrangling
 
     // DEBUG RAW DATA
-    console.log(this.data);
+    // console.log(this.data);
 
     this.initVis();
 }
@@ -68,7 +68,7 @@ StackedAreaChart.prototype.initVis = function(){
 
     var dataCategories = colorScale.domain();
 
-    console.log(colorScale.domain())
+    // console.log(colorScale.domain())
     stack = d3.stack()
       .keys(dataCategories);
 
@@ -136,13 +136,13 @@ StackedAreaChart.prototype.updateVis = function(){
 	]);
 
     var dataCategories = colorScale.domain();
-    console.log(dataCategories);
+    // console.log(dataCategories);
 
 // Draw the layers
     var categories = vis.svg.selectAll(".areaStacked")
         .data(vis.displayData);
 
-    console.log(vis.displayData)
+    // console.log(vis.displayData)
 
     categories.enter().append("path")
         .attr("class", "areaStacked")
