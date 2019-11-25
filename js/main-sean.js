@@ -54,18 +54,15 @@ function updateViz(data) {
         dataArray.push(dataSet[d][rank]);
     }
 
+    var colorScale = d3.scaleQuantile()
+        .domain(dataArray)
+
     if (rank === "participate") {
-        var colorScale = d3.scaleQuantile()
-            .domain(dataArray)
-            .range(["#fef0d9", "#fdcc8a", "#fc8d59", "#e34a33", "#b30000"]);
+        colorScale.range(["#fef0d9", "#fdcc8a", "#fc8d59", "#e34a33", "#b30000"]);
     } else if (rank === "benefit") {
-        var colorScale = d3.scaleQuantile()
-            .domain(dataArray)
-            .range(["#edf8fb", "#b2e2e2", "#66c2a4", "#2ca25f", "#006d2c"]);
+        colorScale.range(["#edf8fb", "#b2e2e2", "#66c2a4", "#2ca25f", "#006d2c"]);
     } else {
-        var colorScale = d3.scaleQuantile()
-            .domain(dataArray)
-            .range(["#feebe2", "#fbb4b9", "#f768a1", "#c51b8a", "#7a0177"]);
+        colorScale.range(["#feebe2", "#fbb4b9", "#f768a1", "#c51b8a", "#7a0177"]);
     }
 
     d3.json("data/states.json", function (json) {
