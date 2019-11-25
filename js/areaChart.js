@@ -61,7 +61,7 @@ AreaChart.prototype.initVis = function() {
         .text("Date");
 
     vis.svg.append('text').attr('fill', 'black')
-        .attr('id', 'tooltip')
+        .attr('id', 'tooltip-graph')
         .attr('x', 50)
         .attr('y', 30);
 
