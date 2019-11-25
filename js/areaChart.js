@@ -60,10 +60,16 @@ AreaChart.prototype.initVis = function() {
         .attr("class", "axis-label")
         .text("Date");
 
-    vis.svg.append('text').attr('fill', 'black')
-        .attr('id', 'tooltip')
-        .attr('x', 50)
-        .attr('y', 30);
+    vis.svg.append("defs").append("clipPath")
+        .attr("id", "clip")
+        .append("rect")
+        .attr("width", vis.width)
+        .attr("height", vis.height);
+
+    // vis.svg.append('text').attr('fill', 'black')
+    //     .attr('id', 'tooltip')
+    //     .attr('x', 50)
+    //     .attr('y', 30);
 
     vis.wrangleData();
 
