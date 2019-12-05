@@ -13,29 +13,6 @@ queue()
     .defer(d3.csv,"data/totalBudgetOnly.csv")
     .await(createVisualization);
 
-// function loadData() {
-//
-//     d3.csv("data/SNAPsummary.csv", function (csv) {
-//
-//         csv.map(function (d) {
-//             d.Year = parseTime(d.Year);
-//             d.average_participation = +d.average_participation;
-//             d.average_benefit = +d.average_benefit;
-//             d.total_benefit = +d.total_benefit;
-//             d.other_costs = +d.other_costs;
-//             d.total_costs = +d.total_costs;
-//         });
-//
-//         data_area = csv;
-//
-//         console.log(data_area);
-//
-//         createVisualization();
-//
-//     });
-//
-// }
-
 function createVisualization(error, summaryData, budgetData) {
 
     if (error) { console.log(error); }
