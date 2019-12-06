@@ -26,7 +26,7 @@ StackedAreaChart = function(_parentElement, _data){
 StackedAreaChart.prototype.initVis = function(){
 	var vis = this;
 
-	vis.margin = { top: 40, right: 0, bottom: 60, left: 60 };
+	vis.margin = { top: 40, right: 0, bottom: 60, left: 70 };
 
 	vis.width = 600 - vis.margin.left - vis.margin.right,
     vis.height = 400 - vis.margin.top - vis.margin.bottom;

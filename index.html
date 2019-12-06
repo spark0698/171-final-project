@@ -24,52 +24,31 @@
 
     <div class="container viz">
         <div class="row">
-            <div class="col">
+            <div class="col-6">
                 <div class="row">
-                    <div id='timeline'></div>
-                </div>
-<!--                <div class="row">-->
-<!--                    <p class="col-4">Chart Data: </p>-->
-<!--                    <p class="col-3">Time Period: </p>-->
-<!--                    <button class="button col-sm-1" type="button" style="width:40px; height:25px;"-->
-<!--                            onclick="updateVisualization()">Filter</button>-->
-<!--                </div>-->
-
-                <div class="row">
-                    <div class="form-group col-4">
+                    <div class="form-group col-5">
                         <select class="form-control" id="filter" onchange="updateVisualization()">
                             <option value="average_participation">Average Participation</option>
                             <option value="average_benefit">Average Benefit</option>
                             <option value="total_benefit">Total Benefit</option>
                             <option value="other_costs">Other Costs</option>
                             <option value="total_costs">Total Costs</option>
+                            <option value="total_benefit">Cost vs Benefit</option>
                         </select>
                     </div>
-
-<!--                    <div class="time-group col-8">-->
-<!--                        <input type="text" placeholder="From" id="first-year">-->
-<!--                        - -->
-<!--                        <input type="text" placeholder="To" id="last-year">-->
-<!--                    </div>-->
-                </div>
-
-                <div class="row">
-                    <div id="graph-area"></div>
                 </div>
             </div>
-            <div class="col">
-                <div class="row">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                        laborum.</p>
-                </div>
-                <div class="row">
-                    <img class="tmp" src="img/empty-image.png">
-                </div>
+            <div class="col-6">
+                <h3>SNAP vs Other Social Welfare Programs</h3>
             </div>
         </div>
+        <div class="row">
+                <div id="graph-area" class="col-6"></div>
+                <div id ='stacked' class="col-6">
+                    <div id='chart-area'></div>
+                </div>
+        </div>
+        <div id='timeline-area'></div>
     </div>
 
     <div class="container viz">
@@ -82,14 +61,6 @@
                 laborum.</p>
         </div>
 
-        <h1>SNAP vs Other Social Welfare Programs</h1>
-
-        <div id = 'stacked'>
-
-            <div id='chart-area'>
-            </div>
-            <div id='timeline-area'>
-            </div>
     </div>
 
     <div class="container viz">
@@ -107,6 +78,32 @@
                     laborum.</p>
             </div>
         </div>
+
+        <div class="row" id="placeholder">
+            <div class="col">
+                <img class="tmp" src="img/empty-image.png">
+            </div>
+            <div class="col">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                    laborum.</p>
+            </div>
+        </div>
+
+<!--        <div class="col">-->
+<!--            <div class="row">-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore-->
+<!--                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo-->
+<!--                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla-->
+<!--                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est-->
+<!--                    laborum.</p>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                <img class="tmp" src="img/empty-image.png">-->
+<!--            </div>-->
+<!--        </div>-->
 
         <div class="row">
             <h3>State Breakdown Categories (August 2019)</h3>
@@ -126,6 +123,15 @@
         </div>
 
     </div>
+
+    <div class="container viz">
+        <h1>Sankey Placeholder</h1>
+
+        <div class="row">
+            <div id="sankey"></div>
+        </div>
+    </div>
+
     
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
@@ -135,6 +141,8 @@
     <script src='js/areaChart.js'></script>
     <script src='js/stackedAreaChart.js'></script>
     <script src='js/timeline.js'></script>
+    <script src="js/d3-tip.js"></script>
+    <script src="js/sankey.js"></script>
 
     <script src="js/main.js"></script>
     <script src="js/main-larry.js"></script>

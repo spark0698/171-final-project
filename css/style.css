@@ -52,9 +52,24 @@ label {
     clip-path: url(#clip);
 }
 
+.line {
+    fill: none;
+    stroke-width: 4px;
+    clip-path: url(#clip);
+}
+
 .axis-label {
     font-family: Calibri, serif;
     font-size: 14px;
     font-weight: bold;
+}
+
+#tooltip-line1, #tooltip-line2 {
+    font-family: Calibri, serif;
+    font-size: 15px;
+}
+
+.circle {
+    clip-path: url(#clip);
 }
 
