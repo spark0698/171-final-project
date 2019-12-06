@@ -1,10 +1,10 @@
 /*
- * AreaChart - Object constructor function
+ * LineChart - Object constructor function
  * @param _parentElement 	-- the HTML element in which to draw the area chart
  * @param _data						-- the dataset 'household characteristics'
  */
 
-AreaChart = function(_parentElement, _data){
+LineChart = function(_parentElement, _data){
     this.parentElement = _parentElement;
     this.data = _data;
     this.filtered_data = [];
@@ -12,7 +12,7 @@ AreaChart = function(_parentElement, _data){
     this.initVis();
 }
 
-AreaChart.prototype.initVis = function() {
+LineChart.prototype.initVis = function() {
     var vis = this;
 
     vis.margin = {top: 40, right: 100, bottom: 60, left: 50};
@@ -81,7 +81,7 @@ AreaChart.prototype.initVis = function() {
 
 }
 
-AreaChart.prototype.wrangleData = function(){
+LineChart.prototype.wrangleData = function(){
     var vis = this;
 
     vis.filtered_data = vis.data;
@@ -90,7 +90,7 @@ AreaChart.prototype.wrangleData = function(){
 
 }
 
-AreaChart.prototype.updateVis = function(){
+LineChart.prototype.updateVis = function(){
     var vis = this;
 
     vis.filter = d3.select("#filter").property("value");

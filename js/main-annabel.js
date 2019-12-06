@@ -2,8 +2,8 @@ var formatTime = d3.timeFormat("%Y");
 var parseTime = d3.timeParse("%Y");
 var colorScale = d3.scaleOrdinal(d3.schemeCategory20);
 
-var grapharea, timeline, areachart;
-var data_area = [],
+var linechart, timeline, areachart;
+var lineData = [],
     allData = [];
 
 // loadData();
@@ -17,9 +17,9 @@ function createVisualization(error, summaryData, budgetData) {
 
     if (error) { console.log(error); }
 
-    data_area = summaryData;
+    lineData = summaryData;
 
-    data_area.map(function(d) {
+    lineData.map(function(d) {
         d.Year = parseTime(d.Year);
         d.average_participation = +d.average_participation;
         d.average_benefit = +d.average_benefit;
@@ -44,17 +44,17 @@ function createVisualization(error, summaryData, budgetData) {
     // Color scale for the stacked area chart
     colorScale.domain(d3.keys(allData[0]).filter(function(d){ return d != "Year"; }));
 
-    // console.log(data_area);
+    // console.log(lineData);
 
-    grapharea = new AreaChart('graph-area', data_area);
+    linechart = new LineChart('chart-line', lineData);
     areachart = new StackedAreaChart('chart-area', allData);
-    timeline = new Timeline('timeline-area', data_area);
+    timeline = new Timeline('timeline-area', lineData);
 
 }
 
 function updateVisualization() {
 
-    grapharea.updateVis();
+    linechart.updateVis();
 
 }
 
@@ -68,10 +68,10 @@ function brushed() {
     var selectionDomain = selectionRange.map(timeline.x.invert);
     // console.log(selectionDomain);
 
-    grapharea.timeScale.domain(selectionDomain);
+    linechart.timeScale.domain(selectionDomain);
     areachart.x.domain(selectionDomain);
 
-    grapharea.wrangleData();
+    linechart.wrangleData();
     areachart.wrangleData();
 
 }
