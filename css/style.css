@@ -5,7 +5,8 @@ body {
 }
 
 h1 {
-    text-align: center;
+    text-align: left;
+    margin-bottom: 2em;
 }
 
 .areaStacked {
@@ -73,3 +74,22 @@ label {
     clip-path: url(#clip);
 }
 
+.d3-tip {
+    line-height: 1;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 2px;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+.full-width-bar {
+    margin: 0 -9999rem;
+    /* add back negative margin value */
+    padding: 0.25rem 9999rem;
+    background: rgba(0, 0, 0, 0.5);
+    margin-below: 2em;
+}
+>>>>>>> 581cd58264cba4727019c05e781d2d8a73b10056

@@ -55,15 +55,8 @@ function updateViz(data) {
     }
 
     var colorScale = d3.scaleQuantile()
-        .domain(dataArray)
-
-    if (rank === "participate") {
-        colorScale.range(["#fef0d9", "#fdcc8a", "#fc8d59", "#e34a33", "#b30000"]);
-    } else if (rank === "benefit") {
-        colorScale.range(["#edf8fb", "#b2e2e2", "#66c2a4", "#2ca25f", "#006d2c"]);
-    } else {
-        colorScale.range(["#feebe2", "#fbb4b9", "#f768a1", "#c51b8a", "#7a0177"]);
-    }
+        .range(["#fef0d9", "#fdcc8a", "#fc8d59", "#e34a33", "#b30000"])
+        .domain(dataArray);
 
     d3.json("data/states.json", function (json) {
         for (var i = 0; i < dataSet.length; i++) {
@@ -78,16 +71,54 @@ function updateViz(data) {
         var selection = svg_map.selectAll("path")
             .data(json.features);
 
+        // tooltip
+        var tool_tip = d3.tip()
+            .attr("class", "d3-tip")
+            .offset([-8, 0])
+            .html(function(d) {
+                return d.properties.NAME +
+                    "<br>" + d.properties.value });
+
+        svg_map.call(tool_tip);
+
+        // draw map
         selection.enter()
             .append("path")
             .merge(selection)
+            .on("mouseover", tool_tip.show)
+            .on("mouseout", tool_tip.hide)
             .transition()
-            .duration(550)
+            .duration(1000)
             .style("stroke", "#fff")
             .style("stroke-width", "1")
             .style("fill", function (d) {
                 return colorScale(d.properties.value);
             })
             .attr("d", path);
+
+        // legend
+        d3.select(".column").remove();
+        column("Scale", colorScale);
+
+        function column(title, scale) {
+            var legend = d3.legendColor()
+                .labelFormat(d3.format(",.0f"))
+                .cells(10)
+                .scale(scale);
+
+            var div = d3.select("body").append("div")
+                .attr("class", "column");
+
+            div.append("h4").text(title);
+
+            var svg = div.append("svg");
+
+            svg.append("g")
+                .attr("class", "legendQuant")
+                .attr("transform", "translate(20,20)");
+
+            svg.select(".legendQuant")
+                .call(legend);
+        };
     })
 }
