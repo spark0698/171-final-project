@@ -2,7 +2,7 @@
 
 // --> CREATE SVG DRAWING AREA
 
-var width = 1000,
+var width = 750,
     height = 450;
 
 var tooltip = d3.select("body").append("div")
@@ -103,7 +103,8 @@ function updateViz(data) {
             .on("mouseover", tool_tip.show)
             .on("mouseout", tool_tip.hide)
             .on("click", function(d) {
-                updateSankey(d.properties["NAME"])
+                updateSankey(d.properties["NAME"]);
+                document.getElementById("state-name").innerHTML = d.properties["NAME"];
             })
             .transition()
             .duration(1000)

@@ -1,6 +1,6 @@
-var marginSankey = {top: 1, right: 1, bottom: 6, left: 1},
+var marginSankey = {top: 40, right: 120, bottom: 60, left: 10},
     widthSankey = 500 - marginSankey.left - marginSankey.right,
-    heightSankey = 500 - marginSankey.top - marginSankey.bottom;
+    heightSankey = 400 - marginSankey.top - marginSankey.bottom;
 
 var formatNumber = d3.format(",.0f"),
     format = function(d) { return formatNumber(d) + " TWh"; },
