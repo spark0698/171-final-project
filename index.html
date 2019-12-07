@@ -91,19 +91,6 @@
             </div>
         </div>
 
-<!--        <div class="col">-->
-<!--            <div class="row">-->
-<!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore-->
-<!--                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo-->
-<!--                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla-->
-<!--                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est-->
-<!--                    laborum.</p>-->
-<!--            </div>-->
-<!--            <div class="row">-->
-<!--                <img class="tmp" src="img/empty-image.png">-->
-<!--            </div>-->
-<!--        </div>-->
-
         <div class="row">
             <h3>State Breakdown Categories (August 2019)</h3>
             <p>* Data for North Carolina is unavailable</p>
@@ -129,26 +116,31 @@
     </div>
 
     <div class="container viz">
-        <h1>Sankey Placeholder</h1>
+        <input type="text" placeholder="State" id="sankey-selection">
+        <button class="button col-sm-1" type="button" style="width:40px; height:25px;"
+                onclick="updateSankey()">Filter</button>
 
         <div class="row">
             <div id="sankey"></div>
         </div>
     </div>
 
-    
+
+
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/d3.min.js"></script>
-        <script src="js/d3-tip.js"></script>
-        <script src="js/d3-legend.js"></script>
+    <script src="js/d3-tip.js"></script>
+    <script src="js/d3-legend.js"></script>
     <script src="js/queue.min.js"></script>
     <script src='js/areaChart.js'></script>
     <script src='js/stackedAreaChart.js'></script>
     <script src='js/timeline.js'></script>
     <script src="js/d3-tip.js"></script>
+    <script src="js/d3-sankey.js"></script>
     <script src="js/sankey.js"></script>
+
 
     <script src="js/main.js"></script>
     <script src="js/main-larry.js"></script>

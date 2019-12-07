@@ -93,6 +93,15 @@ html, body {
     margin-below: 2em;
 }
 
+.link {
+    fill: none;
+    stroke: #000;
+    stroke-opacity: .2;
+}
+.link:hover {
+    stroke-opacity: .5;
+}
+
 #map {
     text-align: left;
 }
