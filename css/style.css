@@ -100,4 +100,7 @@ html, body {
 }
 .link:hover {
     stroke-opacity: .5;
+
+#map {
+    text-align: left;
 }
