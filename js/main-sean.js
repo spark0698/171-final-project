@@ -100,6 +100,9 @@ function updateViz(data) {
             .merge(selection)
             .on("mouseover", tool_tip.show)
             .on("mouseout", tool_tip.hide)
+            .on("click", function(d) {
+                updateSankey(d.properties["NAME"])
+            })
             .transition()
             .duration(1000)
             .style("stroke", "#fff")
