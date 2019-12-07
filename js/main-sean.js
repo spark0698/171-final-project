@@ -3,7 +3,7 @@
 // --> CREATE SVG DRAWING AREA
 
 var width = 1000,
-    height = 600;
+    height = 450;
 
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -76,8 +76,21 @@ function updateViz(data) {
             .attr("class", "d3-tip")
             .offset([-8, 0])
             .html(function(d) {
-                return d.properties.NAME +
-                    "<br>" + d.properties.value });
+                var total = d.properties.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                if (d.properties.NAME === "North Carolina") {
+                    return "North Carolina Data Unavailable"
+                }
+                if (rank === "participate") {
+                    return d.properties.NAME +
+                        "<br>" + total + " people"
+                } else if (rank === "households") {
+                    return d.properties.NAME +
+                        "<br>" + total + " households"
+                } else {
+                    return d.properties.NAME +
+                        "<br>$" + total
+                }
+            });
 
         svg_map.call(tool_tip);
 
@@ -106,7 +119,7 @@ function updateViz(data) {
                 .cells(10)
                 .scale(scale);
 
-            var div = d3.select("body").append("div")
+            var div = d3.select("#key").append("div")
                 .attr("class", "column");
 
             div.append("h4").text(title);

@@ -92,3 +92,7 @@ html, body {
     background: rgba(0, 0, 0, 0.5);
     margin-below: 2em;
 }
+
+#map {
+    text-align: left;
+}
