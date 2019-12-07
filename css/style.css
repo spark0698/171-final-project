@@ -1,7 +1,7 @@
 /* custom css rules */
 
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Arial', sans-serif;
 }
 
 h1 {
@@ -85,6 +85,7 @@ label {
 html, body {
     overflow-x: hidden;
 }
+
 .full-width-bar {
     margin: 0 -9999rem;
     /* add back negative margin value */
@@ -104,4 +105,9 @@ html, body {
 
 #map {
     text-align: left;
+}
+
+#state-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
 }

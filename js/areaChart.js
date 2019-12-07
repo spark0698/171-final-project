@@ -15,7 +15,7 @@ LineChart = function(_parentElement, _data){
 LineChart.prototype.initVis = function() {
     var vis = this;
 
-    vis.margin = {top: 40, right: 100, bottom: 60, left: 50};
+    vis.margin = {top: 20, right: 100, bottom: 60, left: 50};
     vis.width = 650 - vis.margin.left - vis.margin.right;
     vis.height = 400 - vis.margin.top - vis.margin.bottom;
     vis.bisectDate = d3.bisector(function (d){ return d.Year }).left;
@@ -123,6 +123,36 @@ LineChart.prototype.updateVis = function(){
             }
         });
 
+    if (vis.filter_name == "Cost vs Benefit") {
+        vis.line2 = d3.line()
+            .x(function(d) { return vis.timeScale(d.Year); })
+            .y(function(d) { return vis.yScale(d["total_benefit"]); })
+            .curve(d3.curveLinear);
+
+        vis.svg.append("path")
+            .attr("class", "line")
+            .attr("d", vis.line2(vis.filtered_data))
+            .attr("stroke", "rgba(72,203,137,0.56)");
+
+        vis.svg.append("circle")
+            .attr("class", "circle")
+            .data(vis.filtered_data)
+            .on('mouseover', function(d) {
+                d3.select("#tooltip-line1")
+                    .text("Year: " + vis.formatTime(d.Year));
+                d3.select("#tooltip-line2")
+                    .text("Total Costs: " + d[vis.filter].toFixed());
+            })
+            .on('mouseout', function(d){
+                d3.select('#tooltip-line1').text('');
+                d3.select('#tooltip-line2').text('')
+            })
+            .attr("r", 3)
+            .attr("fill", "rgba(68,165,103,0.71)")
+            .attr("cx", function(d) { return vis.timeScale(d.Year); })
+            .attr("cy", function(d) { return vis.yScale(d["total_benefit"]); });
+    }
+
     vis.circles = vis.svg.selectAll(".circle")
         .data(vis.filtered_data);
 
@@ -133,7 +163,12 @@ LineChart.prototype.updateVis = function(){
             d3.select("#tooltip-line1")
                 .text("Year: " + vis.formatTime(d.Year));
             d3.select("#tooltip-line2")
-                .text(vis.filter_name + ": " + d[vis.filter].toFixed())
+                .text(function(i) {if (vis.filter_name == "Cost vs Benefit") {
+                    return "Total Benefit: " + d[vis.filter].toFixed();
+                } else {
+                    return vis.filter_name + ": " + d[vis.filter].toFixed();
+                }
+            })
         })
         .on('mouseout', function(d){
             d3.select('#tooltip-line1').text('');

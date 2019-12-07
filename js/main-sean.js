@@ -103,8 +103,8 @@ function updateViz(data) {
             .on("mouseover", tool_tip.show)
             .on("mouseout", tool_tip.hide)
             .on("click", function(d) {
-                updateSankey(d.properties["NAME"]);
-                document.getElementById("state-name").innerHTML = d.properties["NAME"];
+                updateSankey(d.properties["NAME"], colorScale(d.properties.value));
+                document.getElementById("state-name").innerHTML = d.properties["NAME"] + " - Average Monthly Benefit";
             })
             .transition()
             .duration(1000)
