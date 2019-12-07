@@ -1,0 +1,15 @@
+{
+  "nodes":[
+    {"node":0,"name":"Households with Children"},
+    {"node":1,"name":"Working Households"},
+    {"node":2,"name":"Households with Seniors"},
+    {"node":3,"name":"Households with Non-elderly Disabled Individuals"},
+    {"node":4,"name":"All Households"}
+  ],
+  "links":[
+    {"source":0,"target":4,"value":399},
+    {"source":1,"target":4,"value":307},
+    {"source":2,"target":4,"value":103},
+    {"source":3,"target":4,"value":202}
+  ],
+}

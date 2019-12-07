@@ -92,3 +92,12 @@ html, body {
     background: rgba(0, 0, 0, 0.5);
     margin-below: 2em;
 }
+
+.link {
+    fill: none;
+    stroke: #000;
+    stroke-opacity: .2;
+}
+.link:hover {
+    stroke-opacity: .5;
+}
