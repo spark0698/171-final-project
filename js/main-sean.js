@@ -36,6 +36,8 @@ function loadMap() {
             d.participate = +d.participate;
             d.benefit = d.benefit.replace(/\,/g, '');
             d.benefit = +d.benefit;
+            d.loss = d.loss.replace(/\,/g, '');
+            d.loss = +d.loss;
         });
 
         dataSet = data;
@@ -80,7 +82,7 @@ function updateViz(data) {
                 if (d.properties.NAME === "North Carolina") {
                     return "North Carolina Data Unavailable"
                 }
-                if (rank === "participate") {
+                if (rank === "participate" || rank === "loss") {
                     return d.properties.NAME +
                         "<br>" + total + " people"
                 } else if (rank === "households") {
