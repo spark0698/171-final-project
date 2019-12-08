@@ -206,7 +206,7 @@ body {
     clip-path: url(#clip);
 }
 
-.axis-label {
+.axis-label, .axis-label-area {
     font-family: Roboto;
     font-size: 14px;
     font-weight: bold;
@@ -251,7 +251,7 @@ html, body {
 }
 
 #state-name {
-    font-family: 'Roboto', sans-serif;
+    font-family: Futura;
     font-size: 18px;
 }
 

@@ -135,7 +135,7 @@ LineChart.prototype.updateVis = function(){
             .attr("stroke", "rgba(72,203,137,0.56)");
 
         vis.svg.append("circle")
-            .attr("class", "circle")
+            .attr("class", "circle2")
             .data(vis.filtered_data)
             .on('mouseover', function(d) {
                 d3.select("#tooltip-line1")

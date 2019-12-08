@@ -1,5 +1,5 @@
-var marginSankey = {top: 10, right: 120, bottom: 60, left: 10},
-    widthSankey = 350 - marginSankey.left - marginSankey.right,
+var marginSankey = {top: 10, right: 50, bottom: 10, left: 10},
+    widthSankey = 450 - marginSankey.left - marginSankey.right,
     heightSankey = 250 - marginSankey.top - marginSankey.bottom;
 
 var formatNumber = d3.format(",.0f"),
@@ -86,7 +86,8 @@ function loadData() {
             .attr("dy", ".35em")
             .attr("text-anchor", "end")
             .attr("transform", null)
-            .attr('font-size', 12)
+            .attr("font-family", "Futura")
+            .attr('font-size', 11)
             .text(function(d) { return d.name; })
             .filter(function(d) { return d.x < widthSankey / 2; })
             .attr("x", 6 + sankey.nodeWidth())
