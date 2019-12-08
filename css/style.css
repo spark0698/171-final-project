@@ -187,6 +187,7 @@ body {
 
 .tmp {
     max-width: 100%;
+    margin-top: 1em;
 }
 
 #placeholder {
@@ -259,3 +260,7 @@ html, body {
     font-size: 18px;
 }
 
+.state-title {
+    display: flex;
+    justify-content: center;
+}
