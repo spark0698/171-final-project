@@ -65,12 +65,12 @@ StackedAreaChart.prototype.initVis = function(){
 
     vis.svg.append("text")
         .attr("transform", "translate(" + (vis.width - 85) + "," + (vis.height + 35) + ")")
-        .attr("class", "axis-label")
+        .attr("class", "axis-label-area")
         .text("Date");
 
     vis.svg.append("text")
         .attr("transform", "translate(-45, -10)")
-        .attr("class", "axis-label y-label")
+        .attr("class", "axis-label-area y-label-area")
         .text("Thousands");
 
 

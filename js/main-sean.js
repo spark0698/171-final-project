@@ -2,8 +2,8 @@
 
 // --> CREATE SVG DRAWING AREA
 
-var width = 550,
-    height = 325;
+var width = 650,
+    height = 350;
 
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -128,7 +128,7 @@ function updateViz(data) {
             var div = d3.select("#key").append("div")
                 .attr("class", "column");
 
-            div.append("h4").text(title);
+            // div.append("h4").text(title);
 
             var svg = div.append("svg");
 
