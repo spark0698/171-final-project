@@ -68,6 +68,8 @@ body {
 
 .stats-row {
     height: 20vh;
+    display: flex;
+    justify-content: center;
 }
 
 .stats-div-wrapper {
