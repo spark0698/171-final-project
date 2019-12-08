@@ -8,25 +8,108 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-                <span class="navbar-text">
-                    Oh SNAP! Food Stamps Over Time
-                </span>
-    </nav>
-    <div class="container">
-        <h1 class="full-width-bar">SNAP's Effect Across the Nation</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.</p>
+   
+
+    <div class="container summary-container">
+        <div class = 'row summary-row' >
+            <div class = 'summary-div-outer'>
+            <div class='summary-div'>
+                <div class='summary-div-background'>
+                <div class='section-title'>
+                <h1>Oh SNAP! On Food Stamps</h1>
+                </div>
+                <div class="" ='summary-content'>
+                    <p>The Supplemental Nutrition Assistance Program (SNAP) is a social program enacted by American government in the 1960s to combat hunger in the United States; it is more commonly known as food stamps, referring to the way that the aid was disbursed with special coupons before the switch to an Electronic Benefit Transfer (EBT) system. In this visualization, we'll explore a brief history of the program as well as examine how the program benefits states individually. </p>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
     </div>
 
-    <div class="container viz">
-        <div class="row">
-            <div class="col-6">
-                <div class="row">
-                    <div class="form-group col-5">
+    <div class='container' id='initial-stats-container'>
+        <div class='row stats-row'>
+            <div id ='initial-stats'>
+                <h3> Over the years, it has become the cornerstone of the government’s strategy against food insecurity. 
+            </div>
+        </div>
+        <div class ='row stats-row'>
+            <div class = 'stats-div-wrapper'>
+                <div id='pop-stat' class='stats-div'>
+                 <h1> 40 million</h1> 12.3% of US population on SNAP<br>
+                 
+                </div>
+            </div>
+            <div id ='empty-wrapper' class = 'stats-div-wrapper'>
+                
+            </div>
+
+            <div id='benefit-stat' class = 'stats-div-wrapper'>
+                <div  class='stats-div'>
+                 <h1> 131 dollars</h1> average monthly benefit per person<br>
+                 
+                </div>
+            </div>
+
+            <div class='row stats-row' id='stats-row-bottom'>
+
+            <div>
+                <h5> Aid is only permitted to be used at specially designated groceries, and only on approved items. 
+
+                <br>
+                <a href='https://www.fns.usda.gov/snap/eligible-food-items' target='_blank' class='special'>Products including, but not limited to, alcohol, tobacco, and hot food, are banned.</a>
+            </div>
+        </div>
+        </div>
+        </div>
+
+    </div>
+    <div class="container summary-container" id='first-vis-summary-container'>
+        <div class = 'row summary-row' >
+            <div class = 'summary-div-outer'>
+            <div class='summary-div'>
+                <div class='summary-div-background'>
+                <div class='section-title'>
+                <h1>SNAP's History in Numbers</h1>
+                </div>
+                <div class='summary-content'>
+                    <p> After a short pilot program of 4 years, congress approved the full version of SNAP that we know today in 1968. Below, we present a collection of general statistics relating to SNAP's usage and funding. On the left, we have data related to the cost of the program, the average benefit it has provided over time, and a comparison of the two. On the right, we have a comparison of SNAP (which makes up the bulk of Food and Heatlh Assistance, shown in red) to other Public Assistance line items that make up the welfare state of the United States.
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class='container vis-container'>
+        <div class='vis-background'>
+        <div class='row' id='first-vis-title-row'>
+            <div class='col-6'>
+                <div class='section-title'>
+                    <h5> SNAP over Time
+                </div> 
+            </div>
+            <div class='col-6'>
+                <div class='section-title'>
+                    <h5> SNAP vs Other Assistance Programs </h5>
+                </div>
+            </div>
+
+        </div>
+        <div class = 'row' id='first-vis-row'>
+            <div class='col-6'>
+                <div id='chart-line' >
+                </div>
+            </div>
+            <div class='col-6'>
+                <div id ='stacked'>
+                </div>
+            </div>
+        </div>
+        <div class='row' >
+            <div class='col-12'>
+            <div class="form-group" id='chart-choice'>
                         <select class="form-control" id="filter" onchange="updateVisualization()">
                             <option value="average_participation">Average Participation</option>
                             <option value="average_benefit">Average Benefit</option>
@@ -36,29 +119,62 @@
                             <option value="total_costs">Cost vs Benefit</option>
                         </select>
                     </div>
+                <div id = 'timeline-label'>
+                    Choose a time period to zoom in:
+                </div>
+                <div id='timeline-area'> 
                 </div>
             </div>
-            <div class="col-6">
-                <h3>SNAP vs Other Social Welfare Programs</h3>
+        </div>
+
+        <div class = 'row'>
+            <div class='col-6'> 
+
+                <div id='chart-line-explanation'>
+                </div>
+
+            </div>
+            <div class='col-6' id= 'stacked-explanation'>
+                <p>Compared to other programs like Social Security and Medical Assitance, the line item of Food and Nutrition Assistance (in bright red) has grown relatively little over time. Even now, it represents less than 4% of total expenditures on public assistance programs. Its return on investment is also spectacular: for every 1 dollar spent on SNAP, 1.70 dollars are added to the economy, representing a growth of 70%. 
             </div>
         </div>
-        <div class="row">
-                <div id="chart-line" class="col-6"></div>
-                <div id ='stacked' class="col-6">
-                    <div id='chart-area'></div>
-                </div>
         </div>
-        <div id='timeline-area'></div>
     </div>
 
-    <div class="container viz">
 
+    <!-- <div class="container">
         <div class="row">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum.</p>
+            <div class='md-col-6'>
+                    
+            </div>
+            <div class='md-col-6'>
+                
+            </div>
+        </div>
+        <div class="row">
+                
+        </div>
+                
+        </div>
+
+        
+    </div> -->
+
+
+    <div class="container summary-container" id='state-container'>
+        <div class = 'row summary-row' >
+            <div class = 'summary-div-outer'>
+            <div class='summary-div'>
+                <div class='summary-div-background'>
+                <div class='section-title'>
+                <h1>SNAP Variations by State</h1>
+                </div>
+                <div class='summary-content'>
+                    <p> Though SNAP was initiated at the Federal Level, the States each choose to implement their own versions of SNAP, with different application requirements and income cutoffs. Along with inherent demographic variations, this has led to a large amount of variation among the 50 states in terms of who is benefitting from the program and how much. For example, the average benefits in Hawaii and Alaksa are much higher than those in much of rest of the United States. 
+                </div>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
 
@@ -92,12 +208,13 @@
         </div>
     </div>
 
-    <div class="container viz">
-        <div class="row">
-            <h3>State Breakdown Categories (August 2019)</h3>
-            <p>* Data for North Carolina is unavailable</p>
-        </div>
-
+    <div class="container vis-container" id='states-vis-container'>
+        <div class='vis-background'>
+            <div class="row">
+                <div class='col-12 section-title'>
+                <h3>State by State Breakdown (August 2019)</h3>
+                </div>
+            </div>
         <div class="row">
             <div class="form-group col-4">
                 <select class="form-control" id="rank" onchange="updateViz()">
@@ -118,9 +235,40 @@
                 <div id="sankey"></div>
             </div>
         </div>
+
+        <div class='row'>
+            <div class='col-12'>
+                <div class='section-title'>
+                    <h5>Demographic Variations by State</h5>
+                </div>
+                <div>
+                    The following scatterplot shows each state and data on what percent of its households on SNAP contain either children or elders/disabled. The size of the circle represents the perentage of people of the state that is on SNAP. 
+                </div>
+            </div>
+        </div>
+        <div class='row' id='plot-row'>
+            <div class='col-12' id='plot-area'>
+            </div>
+        </div>
+        </div>
     </div>
 
-
+    <div class="container summary-container" id='state-container'>
+        <div class = 'row summary-row' >
+            <div class = 'summary-div-outer'>
+            <div class='summary-div'>
+                <div class='summary-div-background'>
+                <div class='section-title'>
+                <h1>Donald Trump's Recent SNAP Rule Changes</h1>
+                </div>
+                <div class='summary-content'>
+                    <p> Though SNAP was initiated at the Federal Level, the States each choose to implement their own versions of SNAP, with different application requirements and income cutoffs. Along with inherent demographic variations, this has led to a large amount of variation among the 50 states in terms of who is benefitting from the program and how much. For example, the average benefits in Hawaii and Alaksa are much higher than those in much of rest of the United States. 
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
@@ -135,6 +283,8 @@
     <script src="js/d3-tip.js"></script>
     <script src="js/d3-sankey.js"></script>
     <script src="js/sankey.js"></script>
+    <script src='js/categoryExplanations.js'></script>
+    <script src='js/createPlot.js'></script>
 
 
     <script src="js/main.js"></script>

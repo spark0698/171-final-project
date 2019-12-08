@@ -26,10 +26,10 @@ StackedAreaChart = function(_parentElement, _data){
 StackedAreaChart.prototype.initVis = function(){
 	var vis = this;
 
-	vis.margin = { top: 40, right: 0, bottom: 60, left: 70 };
+	vis.margin = { top: 20, right: 0, bottom: 60, left: 60 };
 
-	vis.width = 600 - vis.margin.left - vis.margin.right,
-    vis.height = 400 - vis.margin.top - vis.margin.bottom;
+	vis.width = 470 - vis.margin.left - vis.margin.right,
+    vis.height = 300 - vis.margin.top - vis.margin.bottom;
 
 
   // SVG drawing area
@@ -44,7 +44,7 @@ StackedAreaChart.prototype.initVis = function(){
 
     // Scales and axes
     vis.x = d3.scaleTime()
-        .range([0, vis.width-20])
+        .range([0, vis.width-vis.margin.left])
         .domain(d3.extent(vis.data, function(d) { return d.Year; }));
 
     vis.y = d3.scaleLinear()
@@ -62,6 +62,16 @@ StackedAreaChart.prototype.initVis = function(){
 
     vis.svg.append("g")
         .attr("class", "y-axis axis");
+
+    vis.svg.append("text")
+        .attr("transform", "translate(" + (vis.width - 85) + "," + (vis.height + 35) + ")")
+        .attr("class", "axis-label")
+        .text("Date");
+
+    vis.svg.append("text")
+        .attr("transform", "translate(-45, -10)")
+        .attr("class", "axis-label y-label")
+        .text("Thousands");
 
 
 	// TO-DO: Initialize stack layout
@@ -86,13 +96,13 @@ StackedAreaChart.prototype.initVis = function(){
      vis.svg.append("defs").append("clipPath")
      .attr("id", "clip")
    .append("rect")
-     .attr("width", vis.width)
+     .attr("width", 280)
      .attr("height", vis.height);
 
 	// // TO-DO: Tooltip placeholder
     vis.svg.append('text').attr('fill', 'black')
         .attr('id', 'tooltip-stacked')
-        .attr('x', 50)
+        .attr('x', 40)
         .attr('y', 30);
 
 
@@ -145,7 +155,12 @@ StackedAreaChart.prototype.updateVis = function(){
     // console.log(vis.displayData)
 
     categories.enter().append("path")
-        .attr("class", "areaStacked")
+        .attr("class",  "areaStacked")
+        .attr('id', function(d, i) {
+            if (dataCategories[i] == 'Food and Nutrition Assistance') {
+                return 'SNAPCategory'
+            }
+        })
         .merge(categories)
         .style("fill", function(d,i) {
             return colorScale(dataCategories[i]);

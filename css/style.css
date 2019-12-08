@@ -1,42 +1,187 @@
 /* custom css rules */
 
 body {
-	font-family: 'Arial', sans-serif;
+    font-family: Roboto;
+    background: rgb(255, 224, 229);
+    font: white;
+    text-align: center;
+
 }
 
-h1 {
-    text-align: left;
-    margin-bottom: 2em;
+/* Summary css rules */
+.summary-container {
+
+    height: 100vh;
+}
+
+.summary-row {
+    padding: 10%;
+    height: 80vh;
+    
+}
+
+.section-title {
+    font-family: Futura;
+    text-align: center;
+}
+
+.summary-div {
+    background-image: url('foodstamps1.jpg');
+    padding: 2%;
+    padding-bottom:3%;
+    border-width: 4px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.summary-div-background {
+    padding: 3%;
+    background: white;
+    margin-bottom: -10px;
+    border-radius: 8px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.summary-div-outer {
+    background-image: url('foodstamps2.jpg');
+    padding:3%;
+    border-radius: 10px;
+    border-color: white;
+    border-style: solid;
+    border-width: 4px;
+}
+
+/*Initial Stats*/
+
+#initial-stats-container {
+    padding: 3%;
+    height: 100vh;
+}
+
+#initial-stats-container{
+    font-family: Futura;
+    text-align: center;
+}
+
+.stats-row {
+    height: 20vh;
+}
+
+.stats-div-wrapper {
+    background-image: url('foodstamps6.jpg');
+    padding: 1%;
+    border-radius: 5px;
+    margin-right: 23px;
+    border-width: 2px;
+    border-color: white;
+    border-style: solid;
+
+}
+
+.stats-div {
+    text-align: center;
+    padding: 2%;
+    padding-bottom: 1%;
+    background: white;
+    border-radius: 5px;
+    font-family: Futura;
+}
+
+.stats-div h1 {
+    text-decoration: underline;
+}
+
+#empty-wrapper {
+  /*  background-image: url('foodstamps4.jpg');*/
+    width: 287px;
+}
+
+#benefit-stat {
+    width: 287px;
+}
+
+.special {
+    background: yellow;
+    font-family: Futura;
+    color: black;
+}
+
+#stats-row-bottom {
+    margin-top: 10vh;
+    padding-left: 4%;
+}
+
+/* First vis rules*/
+
+
+#first-vis-summary {
+    text-align: center;
+}
+
+.vis-container {
+    padding: 1%;
+    background-image: url('foodstamps5.jpg');
+    border-radius: 8px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 10px;
+    height: 105vh;
+}
+
+.vis-background {
+    background-color: white;
+    padding: 2%;
+}
+
+#first-vis-title-row {
+    text-align: center;
+}
+
+#chart-choice {
+    margin-top: -40px;
+    margin-left:120px;
+    width: 200px;
+}
+
+
+#SNAPCategory {
+    opacity: 0.8;
+    clip-path: url(#clip);
 }
 
 .areaStacked {
-  opacity: 0.7;
+  opacity: 0.4;
   clip-path: url(#clip);
 }
+
 .areaStacked:hover {
   opacity: 1;
 }
 
-label {
+#chart-line, #stacked {
+    padding: 2%;
+}
+
+#tooltip-stacked, #chart-line-explanation, #stacked-explanation {
+    font-size: 12px;
+}
+
+
+#state-container {
+    height: 100vh;
+    margin-top: 30vh;
+}
+
+
+/*label {
 	margin: 1%;
-}
+}*/
 
-/* top navbar */
-.navbar-text {
-    font-size: 3em;
-    font-family: 'Roboto', sans-serif;
-}
-
-.navbar {
-    margin-bottom: 1em;
-}
-
-.viz {
-    text-align: center;
-}
-
-.container {
-    margin-top: 1.5em;
+#states-vis-container {
+    height: 190vh;
 }
 
 .tmp {
@@ -60,9 +205,13 @@ label {
 }
 
 .axis-label {
-    font-family: Calibri, serif;
+    font-family: Roboto;
     font-size: 14px;
     font-weight: bold;
+}
+
+.plot-axis-label {
+    font-size: 8px;
 }
 
 #tooltip-line1, #tooltip-line2 {
@@ -86,14 +235,6 @@ html, body {
     overflow-x: hidden;
 }
 
-.full-width-bar {
-    margin: 0 -9999rem;
-    /* add back negative margin value */
-    padding: 0.25rem 9999rem;
-    background: rgba(0, 0, 0, 0.5);
-    margin-below: 2em;
-}
-
 .link {
     fill: none;
     stroke: #000;
@@ -111,3 +252,4 @@ html, body {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
 }
+

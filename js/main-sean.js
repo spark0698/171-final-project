@@ -2,8 +2,8 @@
 
 // --> CREATE SVG DRAWING AREA
 
-var width = 750,
-    height = 450;
+var width = 550,
+    height = 325;
 
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -13,8 +13,8 @@ var lowColor = '#f9f9f9';
 var highColor = '#bc2a66';
 
 var projection = d3.geoAlbersUsa()
-    .translate([width / 2, height / 2])
-    .scale([1000]);
+    .translate([width /2, height / 3])
+    .scale([500]);
 
 var path = d3.geoPath(projection);
 

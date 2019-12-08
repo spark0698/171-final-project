@@ -15,9 +15,9 @@ LineChart = function(_parentElement, _data){
 LineChart.prototype.initVis = function() {
     var vis = this;
 
-    vis.margin = {top: 20, right: 100, bottom: 60, left: 50};
-    vis.width = 650 - vis.margin.left - vis.margin.right;
-    vis.height = 400 - vis.margin.top - vis.margin.bottom;
+    vis.margin = {top: 20, right: 120, bottom: 60, left: 50};
+    vis.width = 550 - vis.margin.left - vis.margin.right;
+    vis.height = 300 - vis.margin.top - vis.margin.bottom;
     vis.bisectDate = d3.bisector(function (d){ return d.Year }).left;
     vis.formatTime = d3.timeFormat("%Y");
 
@@ -230,5 +230,8 @@ LineChart.prototype.updateVis = function(){
 
     vis.path.exit().remove();
     vis.circles.exit().remove();
+
+    d3.select('#chart-line-explanation')
+        .html(chooseExplanation(vis.filter))
 
 }

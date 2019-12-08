@@ -4,16 +4,18 @@ var colorScale = d3.scaleOrdinal(d3.schemeCategory20);
 
 var linechart, timeline, areachart;
 var lineData = [],
-    allData = [];
+    allData = [],
+    percentData;
 
 // loadData();
 
 queue()
     .defer(d3.csv,"data/SNAPsummary.csv")
     .defer(d3.csv,"data/totalBudgetOnly.csv")
+    .defer(d3.csv, "data/statesPercentages.csv")
     .await(createVisualization);
 
-function createVisualization(error, summaryData, budgetData) {
+function createVisualization(error, summaryData, budgetData, statesPercentageData) {
 
     if (error) { console.log(error); }
 
@@ -30,10 +32,11 @@ function createVisualization(error, summaryData, budgetData) {
 
     allData = budgetData;
 
+
     // Years to date objects
     allData.forEach(function(d){
 
-        for (var column in d) {
+    for (var column in d) {
             if (d.hasOwnProperty(column) && column != "Year") {
                 d[column] = +d[column]
             } else if(d.hasOwnProperty(column) && column == "Year") {
@@ -41,14 +44,29 @@ function createVisualization(error, summaryData, budgetData) {
             }
         }
     });
+
+    percentData = statesPercentageData;
+
+    percentData.forEach(function(d){
+
+    for (var column in d) {
+            if (d.hasOwnProperty(column) && column != "State") {
+                d[column] = +d[column]
+            }
+        }
+    });
+
+
     // Color scale for the stacked area chart
     colorScale.domain(d3.keys(allData[0]).filter(function(d){ return d != "Year"; }));
 
     // console.log(lineData);
 
     linechart = new LineChart('chart-line', lineData);
-    areachart = new StackedAreaChart('chart-area', allData);
+    areachart = new StackedAreaChart('stacked', allData);
     timeline = new Timeline('timeline-area', lineData);
+
+    createPlot(percentData)
 
 }
 
