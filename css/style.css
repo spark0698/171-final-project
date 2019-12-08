@@ -4,7 +4,6 @@ body {
     font-family: Roboto;
     background: rgb(255, 224, 229);
     font: white;
-    text-align: center;
 
 }
 
@@ -192,6 +191,11 @@ body {
 
 #placeholder {
     margin-bottom: 3em;
+}
+
+/*scatterplot*/
+.scatterplot {
+    text-align: center;
 }
 
 .area {
